@@ -18,7 +18,7 @@ app.use(cors({
     credentials: true
 }));
 app.use(express.urlencoded({extended:true}));
-app.use(morgan("morgan"));
+app.use(morgan("dev"));
 app.use(express.json());
 app.use(cookieParser())
 

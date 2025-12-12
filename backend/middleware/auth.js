@@ -1,6 +1,8 @@
 require('dotenv').config();
 const jwt = require("jsonwebtoken");
 const createHttpError = require('http-errors');
+const User = require('../models/userModal');
+
 
 
 const isVerify = async(req,res,next)=>{

@@ -6,6 +6,6 @@ const {isVerify} = require('../middleware/auth')
 // Authentication Route
 router.post("/register",register);
 router.post("/login",login);
-router.get("/user", isVerify,getUser);
+router.get("/", isVerify,getUser);
 
 module.exports = router;
