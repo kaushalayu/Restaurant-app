@@ -1,5 +1,5 @@
 import React from "react";
-import { itemsData, metricsData } from "../../constants/pos_system_constants";
+import { itemsData, metricsData } from "../../constants";
 
 const Metrics = () => {
   return (

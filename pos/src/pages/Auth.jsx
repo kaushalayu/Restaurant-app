@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
-import restaurant from '../assets/images/restaurant-img.jpg'
+import restaurant from "../assets/images/restaurant-img.jpg"
 import logo from "../assets/images/logo.png"
-import Register from "../components/shared/Register";
-import Login from "../components/shared/Login";
+import Register from "../components/auth/Register";
+import Login from "../components/auth/Login";
 
 const Auth = () => {
 

@@ -1,5 +1,5 @@
 import React from "react";
-import { orders } from "../../constants/pos_system_constants";
+import { orders } from "../../constants";
 import { GrUpdate } from "react-icons/gr";
 import { keepPreviousData, useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { enqueueSnackbar } from "notistack";
@@ -36,7 +36,7 @@ const RecentOrders = () => {
     enqueueSnackbar("Something went wrong!", { variant: "error" });
   }
 
-  console.log(resData.data.data);
+  console.log(resData);
 
   return (
     <div className="container mx-auto bg-[#262626] p-4 rounded-lg">

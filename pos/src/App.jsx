@@ -1,13 +1,12 @@
-import { useState } from 'react'
-import './App.css'
-import {BrowserRouter as Router,Routes,Route, Navigate ,useLocation} from 'react-router-dom'
-import Home from './pages/Home'
-import Auth from './pages/Auth'
-import Orders from './pages/Orders'
-import Header from './components/shared/Header'
-import Tables from './pages/Tables'
-import Menu from './pages/Menu'
-import Dashboard from './pages/Dashboard'
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  useLocation,
+  Navigate,
+} from "react-router-dom";
+import { Home, Auth, Orders, Tables, Menu, Dashboard } from "./pages";
+import Header from "./components/shared/Header";
 import { useSelector } from "react-redux";
 import useLoadData from "./hooks/useLoadData";
 import FullScreenLoader from "./components/shared/FullScreenLoader"
@@ -88,4 +87,4 @@ function App() {
   );
 }
 
-export default App
+export default App;

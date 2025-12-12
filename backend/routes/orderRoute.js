@@ -1,13 +1,12 @@
-const express = require('express');
+const express = require("express");
+const { addOrder, getOrders, getOrderById, updateOrder } = require("../controllers/orderController");
+const { isVerifiedUser } = require("../middlewares/tokenVerification");
 const router = express.Router();
-const {addOrder,getOrder,getOrders,updateOrder} = require('../controllers/orderController');
-const {isVerify} = require('../middleware/auth');
 
 
-router.post("/",isVerify,addOrder);
-router.get("/",isVerify,getOrders);
-router.get("/:id",isVerify,getOrder);
-router.put("/:id",isVerify,updateOrder);
-
+router.route("/").post(isVerifiedUser, addOrder);
+router.route("/").get(isVerifiedUser, getOrders);
+router.route("/:id").get(isVerifiedUser, getOrderById);
+router.route("/:id").put(isVerifiedUser, updateOrder);
 
 module.exports = router;

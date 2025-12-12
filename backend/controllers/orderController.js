@@ -1,73 +1,76 @@
-const Order = require('../models/orderModel');
 const createHttpError = require("http-errors");
+const Order = require("../models/orderModel");
+const { default: mongoose } = require("mongoose");
 
-const addOrder = async(req,res)=>{
-    try
-    {
-        const order = new Order(req.body);
-        await order.save();
-        res.status(201).json({success:true,message:"Order Created",data:order})
+const addOrder = async (req, res, next) => {
+  try {
+    const order = new Order(req.body);
+    await order.save();
+    res
+      .status(201)
+      .json({ success: true, message: "Order created!", data: order });
+  } catch (error) {
+    next(error);
+  }
+};
 
+const getOrderById = async (req, res, next) => {
+  try {
+    const { id } = req.params;
+
+    if (!mongoose.Types.ObjectId.isValid(id)) {
+      const error = createHttpError(404, "Invalid id!");
+      return next(error);
     }
-    catch(error)
-    {
-        next(error)
+
+    const order = await Order.findById(id);
+    if (!order) {
+      const error = createHttpError(404, "Order not found!");
+      return next(error);
     }
 
-}
+    res.status(200).json({ success: true, data: order });
+  } catch (error) {
+    next(error);
+  }
+};
 
-const getOrder = async(req,res)=>{
-    try
-    {
-        const order = await Order.findById(req.params.id);
-        if(!order)
-        {
-            const error = createHttpError(404,"Order not found");
-            return next(error);
-        }
-        res.status(200).json({success:true,data:order})
+const getOrders = async (req, res, next) => {
+  try {
+    const orders = await Order.find().populate("table");
+    res.status(200).json({ data: orders });
+  } catch (error) {
+    next(error);
+  }
+};
 
+const updateOrder = async (req, res, next) => {
+  try {
+    const { orderStatus } = req.body;
+    const { id } = req.params;
+
+    if (!mongoose.Types.ObjectId.isValid(id)) {
+      const error = createHttpError(404, "Invalid id!");
+      return next(error);
     }
-    catch(error)
-    {
-        next(error);
+
+    const order = await Order.findByIdAndUpdate(
+      id,
+      { orderStatus },
+      { new: true }
+    );
+
+    if (!order) {
+      const error = createHttpError(404, "Order not found!");
+      return next(error);
     }
-    
-}
 
-const getOrders = async(req,res)=>{
-    try
-    {
-        const orders = await Order.find();
-        res.status(200).json({data:orders});
+    res
+      .status(200)
+      .json({ success: true, message: "Order updated", data: order });
+  } catch (error) {
+    next(error);
+  }
+};
 
-    }
-    catch(eror)
-    {
-        next(eror)
-    }
-    
-}
-
-const updateOrder = async(req,res)=>{
-    try
-    {
-        const {orderStatus} = req.body;
-        const order = await Order.findByIdAndUpdate(req.params.id,{orderStatus},{new:true})
-
-        if(!order)
-        {
-             const error = createHttpError(404,"Order not found");
-            return next(error);
-
-        }
-        res.status(200).json({message:"Updated successfully",success:true,data:order})
-
-    }
-    catch(eror)
-    {
-        next(eror)
-    }
-    
-}
-module.exports = {addOrder,getOrder,getOrders,updateOrder}
+module.exports = { addOrder, getOrderById, getOrders, updateOrder };

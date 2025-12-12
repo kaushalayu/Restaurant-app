@@ -23,19 +23,13 @@ export const getAvatarName = (name) => {
 
 }
 
-export const formatDate = (input) => {
-  const date = input instanceof Date ? input : new Date(input);
-
-  if (isNaN(date)) return ""; // prevent crash if invalid date
-
+export const formatDate = (date) => {
   const months = [
-    "January", "February", "March", "April", "May", "June",
-    "July", "August", "September", "October", "November", "December"
+    'January', 'February', 'March', 'April', 'May', 'June',
+    'July', 'August', 'September', 'October', 'November', 'December'
   ];
-
-  return `${months[date.getMonth()]} ${String(date.getDate()).padStart(2, "0")}, ${date.getFullYear()}`;
+  return `${months[date.getMonth()]} ${String(date.getDate()).padStart(2, '0')}, ${date.getFullYear()}`;
 };
-
 
 export const formatDateAndTime = (date) => {
   const dateAndTime = new Date(date).toLocaleString("en-US", {
