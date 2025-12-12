@@ -6,6 +6,8 @@ import choleBhature from '../assets/images/chole-bhature.jpg'
 import rajmaChawal from '../assets/images/rajma-chawal-1.jpg'
 import paneerTikka from '../assets/images/paneer-tika.jpg'
 import gulabJamun from '../assets/images/gulab-jamun.jpg'
+import { MdCategory, MdTableBar } from 'react-icons/md';
+import { BiSolidDish } from 'react-icons/bi';
 // import pooriSabji from '../assets/images/poori-sabji.webp';
 // import roganJosh from '../assets/images/rogan-josh.jpg';
 // import { color } from 'framer-motion';
@@ -434,9 +436,9 @@ export const orders = [
 ];
 
 
-// const buttons = [
-//   { label: "Add Table", icon: <MdTableBar />, action: "table" },
-//   { label: "Add Category", icon: <MdCategory />, action: "category" },
-//   { label: "Add Dishes", icon: <BiSolidDish />, action: "dishes" },
-// ];
+const buttons = [
+  { label: "Add Table", icon: <MdTableBar />, action: "table" },
+  { label: "Add Category", icon: <MdCategory />, action: "category" },
+  { label: "Add Dishes", icon: <BiSolidDish />, action: "dishes" },
+];
 const tabs = ["Metrics", "Orders", "Payments"];

@@ -11,7 +11,7 @@ const OrderCard = ({ key, order }) => {
         <button className="bg-[#f6b100] p-3 text-xl font-bold rounded-lg">
           {getAvatarName(order.customerDetails.name)}
         </button>
-        <div className="flex items-center justify-between w-[100%]">
+        <div className="flex items-center justify-between w-full">
           <div className="flex flex-col items-start gap-1">
             <h1 className="text-[#f5f5f5] text-lg font-semibold tracking-wide">
               {order.customerDetails.name}
@@ -47,7 +47,7 @@ const OrderCard = ({ key, order }) => {
         <p>{formatDateAndTime(order.orderDate)}</p>
         <p>{order.items.length} Items</p>
       </div>
-      <hr className="w-full mt-4 border-t-1 border-gray-500" />
+      <hr className="w-full mt-4 border-t border-gray-500" />
       <div className="flex items-center justify-between mt-4">
         <h1 className="text-[#f5f5f5] text-lg font-semibold">Total</h1>
         <p className="text-[#f5f5f5] text-lg font-semibold">₹{order.bills.totalWithTax.toFixed(2)}</p>

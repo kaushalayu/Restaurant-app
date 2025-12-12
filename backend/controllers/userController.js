@@ -43,7 +43,7 @@ const register = async (req, res, next) => {
 
 const login = async (req, res, next) => {
   try {
-    console.log("LOGIN HIT");
+  
 
     const { email, password } = req.body;
 
@@ -51,22 +51,22 @@ const login = async (req, res, next) => {
       return next(createHttpError(400, "All fields are required!"));
     }
     
-    console.log("EMAIL INPUT =", `"${email}"`);
-console.log("PASSWORD INPUT =", `"${password}"`);
+
 
     const user = await User.findOne({ email });
+    console.log("USER FROM DB:", user);
+
     if (!user) {
       return next(createHttpError(401, "Invalid Credentials"));
     }
 
-    console.log("INPUT:", password);
-console.log("DB:", user.password);
+
 
 
 
     // Compare hashed passwords
     const isMatch = await bcrypt.compare(password, user.password);
-    console.log("PASSWORD MATCH =", isMatch);
+   
     if (!isMatch) {
       return next(createHttpError(401, "Invalid Credentials h bsdk"));
     }

@@ -24,20 +24,27 @@ const Login = () => {
       loginMutation.mutate(formData);
     }
 
-    const loginMutation = useMutation({
-      mutationFn: (reqData) => login(reqData),
-      onSuccess: (res) => {
-          const { data } = res;
-          console.log(data);
-          const { _id, name, email, phone, role } = data.data;
-          dispatch(setUser({ _id, name, email, phone, role }));
-          navigate("/");
-      },
-      onError: (error) => {
-        const { response } = error;
-        enqueueSnackbar(response.data.message, { variant: "error" });
-      }
-    })
+const loginMutation = useMutation({
+  mutationFn: login,
+  onSuccess: (res) => {
+
+    const user = res.data.data;   // ✅ CORRECT USER
+
+    console.log("USER RECEIVED FROM LOGIN:", user);
+
+    dispatch(setUser(user));      // store in redux
+
+    enqueueSnackbar("Login successful!", { variant: "success" });
+
+    navigate("/");
+  },
+  onError: (error) => {
+    enqueueSnackbar(error.response.data.message, { variant: "error" });
+  },
+});
+
+
+
 
   return (
     <div>

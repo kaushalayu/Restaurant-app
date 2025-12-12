@@ -3,7 +3,7 @@ import { menus } from "../../constants";
 import { GrRadialSelected } from "react-icons/gr";
 import { FaShoppingCart } from "react-icons/fa";
 import { useDispatch } from "react-redux";
-import { addItems } from "../../redux/slices/cartSlice";
+import { addItems } from "../../Redux/slices/cartSlice";
 
 
 const MenuContainer = () => {
