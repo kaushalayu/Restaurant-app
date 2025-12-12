@@ -26,6 +26,7 @@ app.use(cookieParser())
 app.use("/api/user",router);
 app.use("api/order",routers);
 app.use("api/table",routerss);
+app.use("/api/payment", require("./routes/paymentRoute"));
 
 
 // Database..
