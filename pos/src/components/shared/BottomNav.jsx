@@ -6,7 +6,7 @@ import { BiSolidDish } from "react-icons/bi";
 import { useNavigate, useLocation } from "react-router-dom";
 import Modal from "./Modal";
 import { useDispatch } from "react-redux";
-import { setCustomer } from "../../redux/slices/customerSlice";
+import { setCustomer } from "../../Redux/slices/customerSlice";
 
 const BottomNav = () => {
   const navigate = useNavigate();
