@@ -14,14 +14,14 @@ connectDB();
 
 // Middlewares
 app.use(cors({
-  origin: ["http://localhost:5173","https://restaurant-app-ye3k.vercel.app"],
+  origin: ["http://localhost:5173","https://restaurant-app-steel-nine.vercel.app"],
   credentials: true,
   methods: ["GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"],
   allowedHeaders: ["Content-Type", "Authorization"],
   preflightContinue: false,
   optionsSuccessStatus: 200
 }));
-app.options("*", cors());
+
 
 app.use(express.json()); // parse incoming request in json format
 app.use(cookieParser());
