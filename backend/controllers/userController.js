@@ -81,12 +81,13 @@ const login = async (req, res, next) => {
 
 
     // Set cookie
- res.cookie("accessToken", accessToken, {
+res.cookie("accessToken", accessToken, {
   httpOnly: true,
-  secure: false,
-  sameSite: "lax",
+  secure: true,        // ✅ REQUIRED (HTTPS)
+  sameSite: "none",    // ✅ REQUIRED (cross-domain)
   maxAge: 1000 * 60 * 60 * 24 * 30
 });
+
 
     res.status(200).json({
       success: true,
